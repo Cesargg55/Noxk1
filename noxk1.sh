@@ -8,7 +8,7 @@ fi
 
 clear
 
-Version=0.1.2
+Version=0.1.3
 
 # Colores ANSI
 RED='\033[0;31m'
@@ -20,7 +20,7 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No Color (reset)
 
 # Archivos necesarios
-REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh")
+REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "keylogg.sh")
 
 check_for_updates() {
     latest_version=$(curl -s https://raw.githubusercontent.com/Cesargg55/Noxk1/main/version.txt)
@@ -28,13 +28,8 @@ check_for_updates() {
         echo -e "${YELLOW}Nueva versión disponible: $latest_version${NC}"
         read -p "Deseas actualizar? [s/n]: " update_choice
         if [ "$update_choice" == "s" ]; then
-            echo "Actualizando..."
-            wget -O nmapModule.sh https://raw.githubusercontent.com/Cesargg55/Noxk1/main/nmapModule.sh
-            wget -O noxk1.sh https://raw.githubusercontent.com/Cesargg55/Noxk1/main/noxk1.sh
-            wget -O msfVModule.sh https://raw.githubusercontent.com/Cesargg55/Noxk1/main/msfVModule.sh
-            chmod +x nmapModule.sh noxk1.sh msfVModule.sh
-            echo "Actualización completada. Reinicia el script para usar la nueva versión."
-            exit 0
+        ./update.sh
+        wget -O nmapModule.sh https://raw.githubusercontent.com/Cesargg55/Noxk1/main/update.sh
         fi
     fi
 }
@@ -78,6 +73,7 @@ echo " [03] Help"
 echo " [04] Exit"
 echo " [05] Nmap (Scan network)"
 echo " [06] MSFVenom Payload Generator"
+echo " [07] Keylogger Generator"
 echo ""
 echo ""
 
@@ -119,6 +115,10 @@ fun_MSFVenom(){
     ./msfVModule.sh
 }
 
+fun_Keylogger(){
+    ./keylogg.sh
+}
+
 if [ $Option -eq 1 ] || [ $Option -eq 01 ]; then
     fun_Update
 elif [ $Option -eq 2 ] || [ $Option -eq 02 ]; then
@@ -134,6 +134,8 @@ elif [ $Option -eq 5 ] || [ $Option -eq 05 ]; then
     ./nmapModule.sh
 elif [ $Option -eq 6 ] || [ $Option -eq 06 ]; then
     fun_MSFVenom
+elif [ $Option -eq 7 ] || [ $Option -eq 07 ]; then
+    fun_Keylogger
 else
     echo "Invalid option!"
 fi

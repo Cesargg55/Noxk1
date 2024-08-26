@@ -9,9 +9,6 @@ fi
 
 script_path=$(readlink -f "$0")
 script_dir=$(dirname "$script_path")
-if [ -f "/usr/local/bin/noxk" ]; then
-    exit 0
-fi
 cat > /usr/local/bin/noxk << EOF
 #!/bin/bash
 "$(readlink -f "$0")"  # Ejecutar el script principal desde su ubicación real (usando comillas)

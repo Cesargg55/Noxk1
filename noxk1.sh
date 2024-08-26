@@ -10,7 +10,6 @@ fi
 script_path=$(readlink -f "$0")
 script_dir=$(dirname "$script_path")
 if [ -f "/usr/local/bin/noxk" ]; then
-    noxk
     exit 0
 fi
 cat > /usr/local/bin/noxk << EOF

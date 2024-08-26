@@ -22,7 +22,7 @@ chmod +x /usr/local/bin/noxk
 
 clear
 
-Version=0.1.4
+Version=0.1.41
 
 # Colores ANSI
 RED='\033[0;31m'
@@ -37,7 +37,7 @@ NC='\033[0m' # No Color (reset)
 REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "keylogg.sh" "update.sh")
 
 check_for_updates() {
-    latest_version=$(curl -s https://raw.githubusercontent.com/Cesargg55/Noxk1/main/version.txt)
+    latest_version=$(curl -s -L https://raw.githubusercontent.com/Cesargg55/Noxk1/main/version.txt)
     if [ "$latest_version" != "$Version" ]; then
         echo -e "${YELLOW}Nueva versión disponible: $latest_version${NC}"
         read -p "Deseas actualizar? [s/n]: " update_choice

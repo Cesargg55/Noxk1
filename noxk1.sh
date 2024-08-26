@@ -15,14 +15,14 @@ if [ -f "/usr/local/bin/noxk" ]; then
 fi
 cat > /usr/local/bin/noxk << EOF
 #!/bin/bash
-$script_path  # Ejecutar el script principal desde su ubicación real
+"$(readlink -f "$0")"  # Ejecutar el script principal desde su ubicación real (usando comillas)
 EOF
 chmod +x /usr/local/bin/noxk
 
 
 clear
 
-Version=0.1.41
+Version=0.1.42
 
 # Colores ANSI
 RED='\033[0;31m'

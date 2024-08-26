@@ -141,3 +141,5 @@ else
     echo "Invalid option selected. Exiting..."
     exit 1
 fi
+read -p "Press any key to exit..."
+./noxk1.sh

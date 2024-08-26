@@ -9,7 +9,7 @@ fi
 
 clear
 
-Version=0.1.0  # Aquí eliminé los espacios alrededor del '='
+Version=0.1.1  # Aquí eliminé los espacios alrededor del '='
 
 # Colores ANSI
 RED='\033[0;31m'
@@ -23,7 +23,7 @@ NC='\033[0m' # No Color (reset)
 
 check_for_updates() { 
 
-    latest_version=$(curl -s https://raw.githubusercontent.com/tu_usuario/tu_repositorio/main/version.txt)
+    latest_version=$(curl -s https://raw.githubusercontent.com/Cesargg55/Noxk1/main/version.txt)
 
     if [ "$latest_version" != "$Version" ]; then
         echo -e "${YELLOW}Nueva versión disponible: $latest_version${NC}"
@@ -33,8 +33,8 @@ check_for_updates() {
             echo "Actualizando..."
 
             # Descargar los scripts actualizados (asegúrate de ajustar las URLs)
-            wget -O nmapModule.sh https://raw.githubusercontent.com/tu_usuario/tu_repositorio/main/nmapModule.sh
-            wget -O otro_script.sh https://raw.githubusercontent.com/tu_usuario/tu_repositorio/main/otro_script.sh
+            wget -O nmapModule.sh nmapModule.sh https://raw.githubusercontent.com/Cesargg55/Noxk1/main/nmapModule.sh
+            wget -O noxk1.sh nmapModule.sh https://raw.githubusercontent.com/Cesargg55/Noxk1/main/noxk1.sh
 
             echo "Actualización completada. Reinicia el script para usar la nueva versión."
             exit 0

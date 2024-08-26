@@ -6,6 +6,20 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+
+script_path=$(readlink -f "$0")
+script_dir=$(dirname "$script_path")
+if [ -f "/usr/local/bin/noxk" ]; then
+    noxk
+    exit 0
+fi
+cat > /usr/local/bin/noxk << EOF
+#!/bin/bash
+$script_path  # Ejecutar el script principal desde su ubicación real
+EOF
+chmod +x /usr/local/bin/noxk
+
+
 clear
 
 Version=0.1.3
@@ -20,7 +34,7 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No Color (reset)
 
 # Archivos necesarios
-REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "keylogg.sh")
+REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "keylogg.sh" "update.sh")
 
 check_for_updates() {
     latest_version=$(curl -s https://raw.githubusercontent.com/Cesargg55/Noxk1/main/version.txt)

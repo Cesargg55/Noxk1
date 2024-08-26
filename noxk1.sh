@@ -22,7 +22,7 @@ chmod +x /usr/local/bin/noxk
 
 clear
 
-Version=0.1.3
+Version=0.1.4
 
 # Colores ANSI
 RED='\033[0;31m'

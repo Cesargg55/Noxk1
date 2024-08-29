@@ -1,24 +1,15 @@
 #!/bin/bash
 
-# Verificar si el script se está ejecutando como root
+#noxk1.sh
+
 if [ "$EUID" -ne 0 ]; then
     echo "Este script debe ejecutarse como root. Saliendo..."
     exit 1
 fi
 
-
-script_path=$(readlink -f "$0")
-script_dir=$(dirname "$script_path")
-cat > /usr/local/bin/noxk << EOF
-#!/bin/bash
-"$(readlink -f "$0")"  # Ejecutar el script principal desde su ubicación real (usando comillas)
-EOF
-chmod +x /usr/local/bin/noxk
-
-
 clear
 
-Version=0.1.44
+Version=0.1.5
 
 # Colores ANSI
 RED='\033[0;31m'
@@ -29,8 +20,8 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color (reset)
 
-# Archivos necesarios
-REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "keylogg.sh" "update.sh")
+# Archivos necesarios (se han añadido los nuevos archivos .cpp dentro de la carpeta Keylogg)
+REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "keylogg.sh" "update.sh" "Keylogg/WindowsKey.cpp" "Keylogg/WindowsKey2.cpp")
 
 check_for_updates() {
     latest_version=$(curl -s -L https://raw.githubusercontent.com/Cesargg55/Noxk1/main/version.txt)
@@ -50,12 +41,20 @@ check_files_and_permissions() {
             echo -e "${RED}Archivo $file no encontrado. Descargando...${NC}"
             wget -O "$file" "https://raw.githubusercontent.com/Cesargg55/Noxk1/main/$file"
         fi
-        if [ ! -x "$file" ]; then
+        if [[ $file == *.sh && ! -x "$file" ]]; then
             echo -e "${YELLOW}Otorgando permisos de ejecución a $file${NC}"
             chmod +x "$file"
         fi
     done
 }
+
+script_path=$(readlink -f "$0")
+script_dir=$(dirname "$script_path")
+cat > /usr/local/bin/noxk << EOF
+#!/bin/bash
+"$(readlink -f "$0")"  # Ejecutar el script principal desde su ubicación real (usando comillas)
+EOF
+chmod +x /usr/local/bin/noxk
 
 # Comprobar si todos los archivos requeridos están presentes y tienen permisos adecuados
 check_files_and_permissions

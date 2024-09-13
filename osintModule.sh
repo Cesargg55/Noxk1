@@ -10,8 +10,7 @@ function install_holehe() {
   echo "holehe is not installed. Installing..."
   git clone https://github.com/megadose/holehe.git
   cd holehe/
-  python3 setup.py install
-  ./osintModule.sh
+  python3 setup.py install  
 }
 
 function holeheF() {
@@ -24,7 +23,6 @@ function holeheF() {
     clear
     holehe $EmailOption
     echo ""
-    read -p "Press any key to exit..."
 }
 clear
 echo ""
@@ -35,6 +33,7 @@ echo "Select the type of Osint:"
 
 if is_holehe_installed; then
   echo " [01] holehe"
+  
 else
   echo " [01] Install holehe (automatic)"
   echo " [02] Other tool (coming soon)"
@@ -48,7 +47,7 @@ case $OsintOption in
     if is_holehe_installed; then
       holeheF
     else
-      install_holehe  # Inform about limitations but attempt installation (if possible)
+      install_holehe
     fi
     ;;
   2 | 02)
@@ -60,4 +59,4 @@ case $OsintOption in
 esac
 
 read -p "Press any key to exit..."
-./noxk1.sh  # Assuming noxk1.sh contains your exit logic
+./noxk1.sh

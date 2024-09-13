@@ -29,7 +29,7 @@ check_for_updates() {
         read -p "Deseas actualizar? [s/n]: " update_choice
         if [ "$update_choice" == "s" ]; then
         ./update.sh
-        wget -O nmapModule.sh https://raw.githubusercontent.com/Cesargg55/Noxk1/main/update.sh
+        wget -O update.sh https://raw.githubusercontent.com/Cesargg55/Noxk1/main/update.sh
         fi
     fi
 }

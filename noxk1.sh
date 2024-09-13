@@ -129,7 +129,7 @@ fun_Keylogger(){
 }
 
 fun_Osint(){
-    ./osintModule.sh
+    
 }
 
 if [ $Option -eq 1 ] || [ $Option -eq 01 ]; then

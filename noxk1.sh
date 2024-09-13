@@ -9,7 +9,7 @@ fi
 
 clear
 
-Version=0.1.6.3
+Version=0.1.7
 
 # Colores ANSI
 RED='\033[0;31m'
@@ -129,7 +129,7 @@ fun_Keylogger(){
 }
 
 fun_Osint(){
-    
+    ./osintModule.sh
 }
 
 if [ $Option -eq 1 ] || [ $Option -eq 01 ]; then

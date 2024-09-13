@@ -12,11 +12,11 @@ function install_osintgram() {
 
   # **Important:** Replace these placeholders with actual installation commands for your system
   # **Debian/Ubuntu:**
-  if [[ "$(lsb_release -is)" == "Ubuntu" || "$(lsb_release -is)" == "Debian" ]]; then
+  if [[ "<span class="math-inline">\(lsb\_release \-is\)" \=\= "Ubuntu" \|\| "</span>(lsb_release -is)" == "Debian" ]]; then
     echo "Detected Ubuntu/Debian. Attempting installation using package manager..."
     sudo apt update && sudo apt install osintgram
   # **Fedora/CentOS/RHEL:**
-  elif [[ "$(cat /etc/os-release | grep -w '^ID=' | cut -d= -f2)" == "fedora" || "$(cat /etc/os-release | grep -w '^ID=' | cut -d= -f2)" == "centos" || "$(cat /etc/os-release | grep -w '^ID=' | cut -d= -f2)" == "rhel" ]]; then
+  elif [[ "<span class="math-inline">\(cat /etc/os\-release \| grep \-w '^ID\=' \| cut \-d\= \-f2\)" \=\= "fedora" \|\| "</span>(cat /etc/os-balance | grep -w '^ID=' | cut -d= -f2)" == "centos" || "$(cat /etc/os-release | grep -w '^ID=' | cut -d= -f2)" == "rhel" ]]; then
     echo "Detected Fedora/CentOS/RHEL. Attempting installation using package manager..."
     sudo dnf update && sudo dnf install osintgram
   # **Provide alternative installation instructions for other distributions**
@@ -31,6 +31,9 @@ function install_osintgram() {
   fi
 }
 
+echo ""
+echo -e "The creator is not responsible for the use given\n"  # Corrected newline with `\n`
+echo -e "    to the application and its functions."
 echo ""
 echo "Select the type of Osint:"
 echo ""
@@ -47,19 +50,17 @@ fi
 echo ""
 read -p "Select an option: " OsintOption
 
-
-function osintgram()
-{
-
+function osintgram() {
+  # Add your OsintGram functionalities here
 }
 
 case $OsintOption in
   1 | 01)
     if is_osintgram_installed; then
-        osintgram
+      osintgram
     else
       read -p "OsintGram is not installed. Install it now? (y/N): " install_choice
-      if [[ $install_choice =~ ^[Yy]$ ]]; then
+      if [[ <span class="math-inline">install\_choice \=\~ ^\[Yy\]</span> ]]; then
         install_osintgram
       fi
     fi

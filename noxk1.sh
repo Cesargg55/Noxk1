@@ -9,7 +9,7 @@ fi
 
 clear
 
-Version=0.1.5
+Version=0.1.6
 
 # Colores ANSI
 RED='\033[0;31m'
@@ -20,8 +20,7 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color (reset)
 
-# Archivos necesarios (se han añadido los nuevos archivos .cpp dentro de la carpeta Keylogg)
-REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "keylogg.sh" "update.sh" "Keylogg/WindowsKey.cpp" "Keylogg/WindowsKey2.cpp")
+REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "keylogg.sh" "update.sh" "Keylogg/WindowsKey.cpp" "Keylogg/WindowsKey2.cpp" "osintModule.sh")
 
 check_for_updates() {
     latest_version=$(curl -s -L https://raw.githubusercontent.com/Cesargg55/Noxk1/main/version.txt)
@@ -83,6 +82,7 @@ echo " [04] Exit"
 echo " [05] Nmap (Scan network)"
 echo " [06] MSFVenom Payload Generator"
 echo " [07] Keylogger Generator"
+echo " [08] Osint"
 echo ""
 echo ""
 
@@ -128,6 +128,10 @@ fun_Keylogger(){
     ./keylogg.sh
 }
 
+fun_Osint(){
+    ./osintModule.sh
+}
+
 if [ $Option -eq 1 ] || [ $Option -eq 01 ]; then
     fun_Update
 elif [ $Option -eq 2 ] || [ $Option -eq 02 ]; then
@@ -145,6 +149,8 @@ elif [ $Option -eq 6 ] || [ $Option -eq 06 ]; then
     fun_MSFVenom
 elif [ $Option -eq 7 ] || [ $Option -eq 07 ]; then
     fun_Keylogger
+elif [ $Option -eq 8 ] || [ $Option -eq 08 ]; then
+    fun_Osint
 else
     echo "Invalid option!"
 fi

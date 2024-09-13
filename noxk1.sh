@@ -9,7 +9,7 @@ fi
 
 clear
 
-Version=0.1.7
+Version=0.1.7.1
 
 # Colores ANSI
 RED='\033[0;31m'

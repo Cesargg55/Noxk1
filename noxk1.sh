@@ -9,7 +9,7 @@ fi
 
 clear
 
-Version=0.1.7.3
+Version=0.1.7.4
 
 # Colores ANSI
 RED='\033[0;31m'
@@ -20,7 +20,7 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color (reset)
 
-REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "keylogg.sh" "update.sh" "Keylogg/WindowsKey.cpp" "Keylogg/WindowsKey2.cpp" "osintModule.sh")
+REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "keylogg.sh" "update.sh" "Keylogg/WindowsKey.cpp" "osintModule.sh")
 
 check_for_updates() {
     latest_version=$(curl -s -L https://raw.githubusercontent.com/Cesargg55/Noxk1/main/version.txt)

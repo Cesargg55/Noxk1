@@ -9,38 +9,6 @@ function is_tor_installed() {
   command -v tor >/dev/null 2>&1
 }
 
-if is_tor_installed; then
-  echo ""
-  echo " Tor is installed"
-  echo ""
-    proxychains_config="/etc/proxychains4.conf"
-
-  # Contenido del nuevo archivo de configuración
-  cat > "$proxychains_config" << EOF
-    dynamic_chain
-    chain_level=connect
-    
-    # ProxyList
-    socks4  127.0.0.1 9050
-    socks5  127.0.0.1 9050
-EOF
-
-else
-  sudo apt install tor
-  proxychains_config="/etc/proxychains4.conf"
-
-  # Contenido del nuevo archivo de configuración
-  cat > "$proxychains_config" << 
-  EOF
-    dynamic_chain
-    chain_level=connect
-    
-    # ProxyList
-    socks4  127.0.0.1 9050
-    socks5  127.0.0.1 9050
-  EOF
-fi
-
 if [ $(systemctl is-active tor) = "active" ]; then
   echo "Tor está en ejecución."
 else

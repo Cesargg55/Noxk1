@@ -5,18 +5,6 @@ function is_holehe_installed() {
   command -v holehe >/dev/null 2>&1
 }
 
-function is_tor_installed() {
-  command -v tor >/dev/null 2>&1
-}
-
-if [ $(systemctl is-active tor) = "active" ]; then
-  echo "Tor está en ejecución."
-else
-  echo "Tor no está en ejecución."
-  sudo systemctl status tor
-  proxychains4 ./osintModule.sh
-fi
-
 function install_holehe() {
   echo "holehe is not installed. Installing..."
   git clone https://github.com/megadose/holehe.git

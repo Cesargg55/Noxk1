@@ -144,7 +144,7 @@ elif [ $Option -eq 4 ] || [ $Option -eq 04 ]; then
 elif [ $Option -eq 5 ] || [ $Option -eq 05 ]; then
     ./nmapModule.sh
 elif [ $Option -eq 6 ] || [ $Option -eq 06 ]; then
-    
+    ./arp_scan.sh
 elif [ $Option -eq 7 ] || [ $Option -eq 07 ]; then
     fun_MSFVenom
 elif [ $Option -eq 8 ] || [ $Option -eq 08 ]; then

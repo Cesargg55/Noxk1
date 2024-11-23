@@ -1,5 +1,7 @@
 #!/bin/bash
 clear
+PURPLE='\033[0;35m' # Color ANSI
+
 
 function is_holehe_installed() {
   command -v holehe >/dev/null 2>&1
@@ -24,6 +26,12 @@ function holeheF() {
     echo ""
 }
 clear
+echo -e "${PURPLE}  ____      _      __ ${NC}"
+echo -e "${PURPLE} / __ \___ (_)__  / /_${NC}"
+echo -e "${PURPLE}/ /_/ (_-</ / _ \/ __/${NC}"
+echo -e "${PURPLE}\____/___/_/_//_/\__/ ${NC}"
+echo -e "${PURPLE}                      ${NC}"
+echo ""
 echo ""
 echo " The creator is not responsible for the use given"
 echo "      to the application and its functions."

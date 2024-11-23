@@ -9,7 +9,7 @@ fi
 
 clear
 
-Version=0.1.7.6
+Version=0.1.7.7
 
 # Colores ANSI
 RED='\033[0;31m'
@@ -81,8 +81,7 @@ echo " [03] Help"
 echo " [04] Exit"
 echo " [05] Nmap (Scan network)"
 echo " [06] MSFVenom Payload Generator"
-echo " [07] Keylogger Generator"
-echo " [08] Osint"
+echo " [07] Osint"
 echo ""
 echo ""
 
@@ -124,10 +123,6 @@ fun_MSFVenom(){
     ./msfVModule.sh
 }
 
-fun_Keylogger(){
-    ./keylogg.sh
-}
-
 fun_Osint(){
     ./osintModule.sh
 }
@@ -148,9 +143,9 @@ elif [ $Option -eq 5 ] || [ $Option -eq 05 ]; then
 elif [ $Option -eq 6 ] || [ $Option -eq 06 ]; then
     fun_MSFVenom
 elif [ $Option -eq 7 ] || [ $Option -eq 07 ]; then
-    fun_Keylogger
-elif [ $Option -eq 8 ] || [ $Option -eq 08 ]; then
     fun_Osint
+elif [ $Option -eq 8 ] || [ $Option -eq 08 ]; then
+    echo "Invalid option!"
 else
     echo "Invalid option!"
 fi

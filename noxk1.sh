@@ -9,7 +9,7 @@ fi
 
 clear
 
-Version=0.1.7.8
+Version=0.1.7.9
 
 # Colores ANSI
 RED='\033[0;31m'
@@ -20,7 +20,7 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color (reset)
 
-REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "keylogg.sh" "update.sh" "Keylogg/WindowsKey.cpp" "osintModule.sh")
+REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "arp_scan" "update.sh" "osintModule.sh")
 
 check_for_updates() {
     latest_version=$(curl -s -L https://raw.githubusercontent.com/Cesargg55/Noxk1/main/version.txt)
@@ -122,13 +122,6 @@ fun_Nuke(){
     fi
 }
 
-fun_MSFVenom(){
-    ./msfVModule.sh
-}
-
-fun_Osint(){
-    ./osintModule.sh
-}
 
 if [ $Option -eq 1 ] || [ $Option -eq 01 ]; then
     fun_Update
@@ -146,9 +139,9 @@ elif [ $Option -eq 5 ] || [ $Option -eq 05 ]; then
 elif [ $Option -eq 6 ] || [ $Option -eq 06 ]; then
     ./arp_scan.sh
 elif [ $Option -eq 7 ] || [ $Option -eq 07 ]; then
-    fun_MSFVenom
+    ./msfVModule.sh
 elif [ $Option -eq 8 ] || [ $Option -eq 08 ]; then
-    fun_Osint
+    ./osintModule.sh
 else
     echo "Invalid option!"
 fi

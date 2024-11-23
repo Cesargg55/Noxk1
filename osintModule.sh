@@ -1,6 +1,8 @@
 #!/bin/bash
 clear
 PURPLE='\033[0;35m' # Color ANSI
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color (reset)
 
 
 function is_holehe_installed() {
@@ -31,7 +33,6 @@ echo -e "${PURPLE} / __ \___ (_)__  / /_${NC}"
 echo -e "${PURPLE}/ /_/ (_-</ / _ \/ __/${NC}"
 echo -e "${PURPLE}\____/___/_/_//_/\__/ ${NC}"
 echo -e "${PURPLE}                      ${NC}"
-echo ""
 echo ""
 echo " The creator is not responsible for the use given"
 echo "      to the application and its functions."

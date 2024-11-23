@@ -9,7 +9,7 @@ fi
 
 clear
 
-Version=0.1.7.7
+Version=0.1.7.8
 
 # Colores ANSI
 RED='\033[0;31m'
@@ -75,13 +75,16 @@ echo ""
 echo -e "${RED} The creator is not responsible for the use given${NC}"
 echo -e "${RED} to the application and its functions.${NC}"
 echo ""
+echo -e "${RED} By Kaesar.${NC}"
+echo ""
 echo " [01] Update and upgrade"
 echo " [02] Nuke_Protocol"
 echo " [03] Help"
 echo " [04] Exit"
 echo " [05] Nmap (Scan network)"
-echo " [06] MSFVenom Payload Generator"
-echo " [07] Osint"
+echo " [06] arp-scan (Scan network)"
+echo " [07] MSFVenom Payload Generator"
+echo " [08] Osint"
 echo ""
 echo ""
 
@@ -141,11 +144,11 @@ elif [ $Option -eq 4 ] || [ $Option -eq 04 ]; then
 elif [ $Option -eq 5 ] || [ $Option -eq 05 ]; then
     ./nmapModule.sh
 elif [ $Option -eq 6 ] || [ $Option -eq 06 ]; then
-    fun_MSFVenom
+    
 elif [ $Option -eq 7 ] || [ $Option -eq 07 ]; then
-    fun_Osint
+    fun_MSFVenom
 elif [ $Option -eq 8 ] || [ $Option -eq 08 ]; then
-    echo "Invalid option!"
+    fun_Osint
 else
     echo "Invalid option!"
 fi

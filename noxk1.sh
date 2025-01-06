@@ -9,7 +9,7 @@ fi
 
 clear
 
-Version=0.1.7.9
+Version=0.2.0
 
 # Colores ANSI
 RED='\033[0;31m'
@@ -20,7 +20,7 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color (reset)
 
-REQUIRED_FILES=("nmapModule.sh" "msfVModule.sh" "noxk1.sh" "arp_scan" "update.sh" "osintModule.sh")
+REQUIRED_FILES=("nmapModule.sh" "noxk1.sh" "update.sh")
 
 check_for_updates() {
     latest_version=$(curl -s -L https://raw.githubusercontent.com/Cesargg55/Noxk1/main/version.txt)
@@ -82,9 +82,6 @@ echo " [02] Nuke_Protocol"
 echo " [03] Help"
 echo " [04] Exit"
 echo " [05] Nmap (Scan network)"
-echo " [06] arp-scan (Scan network)"
-echo " [07] MSFVenom Payload Generator"
-echo " [08] Osint"
 echo ""
 echo ""
 
@@ -136,12 +133,6 @@ elif [ $Option -eq 4 ] || [ $Option -eq 04 ]; then
     exit 0
 elif [ $Option -eq 5 ] || [ $Option -eq 05 ]; then
     ./nmapModule.sh
-elif [ $Option -eq 6 ] || [ $Option -eq 06 ]; then
-    ./arp_scan.sh
-elif [ $Option -eq 7 ] || [ $Option -eq 07 ]; then
-    ./msfVModule.sh
-elif [ $Option -eq 8 ] || [ $Option -eq 08 ]; then
-    ./osintModule.sh
 else
     echo "Invalid option!"
 fi

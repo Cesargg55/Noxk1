@@ -29,36 +29,9 @@ echo -e "${RED} to the application and its functions.${NC}"
 echo ""
 echo " [01] Scan Network"
 echo " [02] Scan Specific IP"
-echo " [03] Scan for Vulnerabilities"
 echo ""
 
 read -p "Select an option: " Option
-
-fun_scanVuln() {
-    read -p "Enter the target IP or hostname: " target
-
-    echo ""
-    echo " Select vulnerability scan type:"
-    echo " [01] Basic vulnerability scan"
-    echo " [02] Intense vulnerability scan (may take longer)"
-    echo ""
-    read -p "Choose scan type: " vulnMode
-
-    case $vulnMode in
-        1 | 01)
-            echo "Starting basic vulnerability scan on $target..."
-            nmap -sV --script vuln $target
-            ;;
-        2 | 02)
-            echo "Starting intense vulnerability scan on $target..."
-            nmap -sV --script=vuln,safe,exploit,discovery $target
-            ;;
-        *)
-            echo "Invalid option. Exiting..."
-            exit 1
-            ;;
-    esac
-}
 
 fun_scanN() {
     read -p "Scan (ip/24): " Netw
@@ -98,7 +71,7 @@ fun_scanIP() {
     echo " Select scan mode:"
     echo " [01] All ports"
     echo " [02] Common ports"
-    echo " [03] Specific ports (comma-separated)"
+    echo " [03] Specific ports Vuln (comma-separated)"
     echo " [04] Paranoid (Stealth)"
     echo ""
     read -p "Choose scan mode: " portMode
@@ -115,7 +88,7 @@ fun_scanIP() {
         3 | 03)
             read -p "Enter specific ports to scan (comma-separated): " specificPorts
             echo "Starting scan on specific ports ($specificPorts) of $targetIP..."
-            nmap -p $specificPorts $targetIP 
+            nmap -n -Pn --script vuln -p  $specificPorts $targetIP 
             ;;
         4 | 04)
             echo "Starting Paranoid (Stealth) scan on $targetIP..."
@@ -134,9 +107,6 @@ then
 elif [ "$Option" -eq 2 ] || [ "$Option" -eq 02 ]
 then
     fun_scanIP
-elif [ "$Option" -eq 3 ] || [ "$Option" -eq 03 ]
-then
-    fun_scanVuln
 else
     echo "Invalid option selected. Exiting..."
     exit 1
